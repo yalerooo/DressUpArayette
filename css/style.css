@@ -1,0 +1,194 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: #fdf2f8;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-wrapper {
+    width: 100%;
+    max-width: 1000px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.game-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    border: 4px solid #f9a8d4;
+    border-radius: 12px;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Estilos generales para los botones (izquierda y derecha) */
+.category-buttons, .category-buttons-right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 10;
+}
+
+/* Botones de la izquierda */
+.category-buttons {
+    left: 30px;
+}
+
+/* Botones de la derecha */
+.category-buttons-right {
+    right: 30px;
+}
+
+.category-button {
+    width: 70px;
+    height: 70px;
+    border: none;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.category-button:hover {
+    transform: scale(1.05);
+}
+
+.category-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, #f9a8d4, #c084fc, #93c5fd);
+    opacity: 0.7;
+    animation: gradient 15s ease infinite;
+}
+
+.category-button span {
+    position: relative;
+    z-index: 1;
+    color: white;
+    font-weight: 500;
+    font-size: 0.9em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.character-layer {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 0.3s;
+}
+
+/* ... (resto de tus estilos para #head, #body, #tops, etc.) ... */
+#head {
+    width: 30%;
+    height: 28%;
+    top: 18%;
+    left: 35%;
+    z-index: 40;
+}
+
+#body {
+    width: 60%;
+    height: 100%;
+    top: 18.33%;
+    left: 20%;
+    z-index: 10;
+}
+
+#tops {
+    width: 19%;
+    height: 80%;
+    top: 7%;
+    left: 40%;
+    z-index: 30;
+}
+
+#bottoms {
+    width: 17%;
+    height: 65%;
+    top: 25%;
+    left: 41%;
+    z-index: 20;
+}
+
+#shoes {
+    width: 37.5%;
+    height: 28%;
+    top: 64%;
+    left: 31.5%;
+    z-index: 20;
+}
+
+#bow {
+    width: 11%;
+    height: 11%;
+    top: 15%;
+    left: 42.5%;
+    z-index: 9999;
+    display: none;
+}
+
+/* Estilos para los nuevos elementos (gorros, bolsos, collares) */
+#hats {
+    width: 40%; /* Ajusta según sea necesario */
+    height: 40%; /* Ajusta según sea necesario */
+    top: 15%;    /* Ajusta según sea necesario */
+    left: 30%;   /* Ajusta según sea necesario */
+    z-index: 42; /* Encima de la cabeza y el lazo */
+    display: none; /* Inicialmente oculto */
+}
+
+#bags {
+    width: 20%; /* Ajusta según sea necesario */
+    height: 30%; /* Ajusta según sea necesario */
+    top: 43%;   /* Ajusta según sea necesario */
+    left: 25%;  /* Ajusta según sea necesario */
+    z-index: 35; /* Encima de la ropa, pero debajo de la cabeza */
+    display: none; /* Inicialmente oculto */
+}
+
+#necklaces {
+    width: 15%; /* Ajusta según sea necesario */
+    height: 15%; /* Ajusta según sea necesario */
+    top: 30%;   /* Ajusta según sea necesario */
+    left: 42.5%; /* Ajusta según sea necesario */
+    z-index: 36; /* Encima de la ropa */
+    display: none; /* Inicialmente oculto */
+}
+
+
+@keyframes gradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 600px) {
+    .game-wrapper {
+        padding: 10px;
+    }
+
+
+
+    .category-button {
+        width: 45px;
+        height: 45px;
+    }
+
+    .category-button span {
+        font-size: 0.7em;
+    }
+        /* ... (tus ajustes para accesorios en móvil) ... */
+
+}

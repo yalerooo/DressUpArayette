@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dress up Arayette</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="game-wrapper">
+        <div class="game-container">
+             <!-- Botones de la izquierda -->
+            <div class="category-buttons">
+                <button class="category-button" onclick="changeItem('tops')">
+                    <span>Tops</span>
+                </button>
+                <button class="category-button" onclick="changeItem('bottoms')">
+                    <span>Bottoms</span>
+                </button>
+                <button class="category-button" onclick="changeItem('shoes')">
+                    <span>Shoes</span>
+                </button>
+                <button class="category-button" onclick="changeItem('background')">
+                    <span>Background</span>
+                </button>
+                <button class="category-button" onclick="toggleBow()">
+                    <span>Lazo</span>
+                </button>
+            </div>
+
+            <!-- Botones de la derecha -->
+            <div class="category-buttons-right">
+                <button class="category-button" onclick="toggleHats()">
+                    <span>Gorros</span>
+                </button>
+                <button class="category-button" onclick="toggleBags()">
+                    <span>Bolsos</span>
+                </button>
+                <button class="category-button" onclick="toggleNecklaces()">
+                    <span>Collares</span>
+                </button>
+            </div>
+
+            <div id="head" class="character-layer"></div>
+            <div id="body" class="character-layer"></div>
+            <div id="tops" class="character-layer"></div>
+            <div id="bottoms" class="character-layer"></div>
+            <div id="shoes" class="character-layer"></div>
+            <div id="bow" class="character-layer"></div>
+            <div id="hats" class="character-layer"></div>
+            <div id="bags" class="character-layer"></div>
+            <div id="necklaces" class="character-layer"></div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script> 
+</body>
+</html>
