@@ -140,6 +140,14 @@ body {
     z-index: 36;
 }
 
+#pets {
+    width: 65%;  /* Ajusta según el tamaño de tus mascotas */
+    height: 65%; /* Ajusta según el tamaño de tus mascotas */
+    top: 30%;    /* Ajusta la posición vertical */
+    left: 30%;   /* Ajusta la posición horizontal */
+    z-index: 25;  /*  Asegúrate de que esté encima de algunos elementos, pero debajo de otros si es necesario */
+}
+
 .item-grids-container {
     flex: 1;
     overflow-y: auto;

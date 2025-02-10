@@ -32,6 +32,8 @@ const assets = {
         { img: 'assets/backgrounds/bg5.jpg', thumb: 'assets/thumbnails/bg5_thumb.jpg', name: 'Background 5' },
         { img: 'assets/backgrounds/bg6.jpg', thumb: 'assets/thumbnails/bg6_thumb.jpg', name: 'Background 6' },
         { img: 'assets/backgrounds/bg7.jpg', thumb: 'assets/thumbnails/bg7_thumb.jpg', name: 'Background 7' },
+        { img: 'assets/backgrounds/bg8.png', thumb: 'assets/thumbnails/bg8_thumb.png', name: 'Background 8' },
+        { img: 'assets/backgrounds/bg9.jpg', thumb: 'assets/thumbnails/bg9_thumb.jpg', name: 'Background 9' },
     ],
     bow: [
         { img: 'assets/bows/bow1.png', thumb: 'assets/thumbnails/bow1_thumb.png', name: 'Bow 1' },
@@ -46,6 +48,12 @@ const assets = {
     ],
     necklaces: [
         { img: 'assets/necklaces/necklace1.png', thumb: 'assets/thumbnails/necklace1_thumb.png', name: 'Necklace 1' },
+    ],
+    pets: [ // Nueva categoría de mascotas
+        { img: 'assets/pets/pet1.png', thumb: 'assets/thumbnails/pet1_thumb.png', name: 'Pet 1' },
+        { img: 'assets/pets/pet2.png', thumb: 'assets/thumbnails/pet2_thumb.png', name: 'Pet 2' },
+        { img: 'assets/pets/pet3.png', thumb: 'assets/thumbnails/pet3_thumb.png', name: 'Pet 3' },
+        // Añade más mascotas aquí
     ]
 };
 
@@ -61,6 +69,7 @@ const currentItems = {
     hats: null,
     bags: null,
     necklaces: null,
+    pets: null,       // Inicialmente, no hay mascota seleccionada
 };
 
 function createItemGrids() {
@@ -91,8 +100,8 @@ function handleItemClick(event) {
     const itemIndex = parseInt(event.target.dataset.itemIndex);
     const selectedItem = assets[category][itemIndex];
 
-    // Categories that can be toggled (accessories and background)
-    const toggleableCategories = ['background', 'bow', 'hats', 'bags', 'necklaces'];
+    // Categories that can be toggled (accessories, background, and now pets)
+    const toggleableCategories = ['background', 'bow', 'hats', 'bags', 'necklaces', 'pets'];
 
     // Deselect the *previously* selected item in this category
     const previouslySelected = document.querySelector(`.item-thumbnail.selected[data-category="${category}"]`);
@@ -102,7 +111,7 @@ function handleItemClick(event) {
 
 
     if (toggleableCategories.includes(category)) {
-        // Toggle logic for accessories and background
+        // Toggle logic for accessories, background, and pets
         if (currentItems[category] === selectedItem) {
             // Deselect (remove) the item
             currentItems[category] = null;
@@ -148,9 +157,9 @@ function initializeGame() {
 
     // Add 'selected' class to initial items.
     for (const category in currentItems) {
-        if (currentItems[category] === null) continue; // Skip accessories
+        if (currentItems[category] === null) continue; // Skip accessories and pets
         const itemIndex = assets[category].indexOf(currentItems[category]);
-        if (itemIndex === -1) continue;
+        if (itemIndex === -1) continue; // si no hay un index
         const thumb = document.querySelector(`.item-thumbnail[data-category="${category}"][data-itemindex="${itemIndex}"]`);
         if (thumb) {
             thumb.classList.add('selected');
