@@ -27,6 +27,11 @@ const assets = {
     background: [
         { img: 'assets/backgrounds/bg1.png', thumb: 'assets/thumbnails/bg1_thumb.png', name: 'Background 1' },
         { img: 'assets/backgrounds/bg2.jpg', thumb: 'assets/thumbnails/bg2_thumb.png', name: 'Background 2' },
+        { img: 'assets/backgrounds/bg3.jpg', thumb: 'assets/thumbnails/bg3_thumb.jpg', name: 'Background 3' },
+        { img: 'assets/backgrounds/bg4.jpg', thumb: 'assets/thumbnails/bg4_thumb.jpg', name: 'Background 4' },
+        { img: 'assets/backgrounds/bg5.jpg', thumb: 'assets/thumbnails/bg5_thumb.jpg', name: 'Background 5' },
+        { img: 'assets/backgrounds/bg6.jpg', thumb: 'assets/thumbnails/bg6_thumb.jpg', name: 'Background 6' },
+        { img: 'assets/backgrounds/bg7.jpg', thumb: 'assets/thumbnails/bg7_thumb.jpg', name: 'Background 7' },
     ],
     bow: [
         { img: 'assets/bows/bow1.png', thumb: 'assets/thumbnails/bow1_thumb.png', name: 'Bow 1' },
