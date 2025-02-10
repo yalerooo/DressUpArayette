@@ -1,84 +1,63 @@
 body {
     margin: 0;
     min-height: 100vh;
-    background-color: #fdf2f8;
-    font-family: sans-serif;
+    background-color: #2c0a1e; /* Fondo oscuro para el toque gótico */
+    font-family: 'Courier New', Courier, monospace; /* Fuente más estilizada */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: #ffc0cb; /* Texto rosa claro */
+   
+}
+
+@keyframes floatingBg {
+    0% { background-position: 0 0, 0 0, 0 0; }
+    100% { background-position: 100px 100px, 150px 150px, 200px 200px; }
+}
+
+.game-title {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 48px;
+    color: #ff69b4;
+    text-shadow: 
+        3px 3px 0 #2c0a1e,
+        -1px -1px 0 #2c0a1e,  
+        1px -1px 0 #2c0a1e,
+        -1px 1px 0 #2c0a1e,
+        1px 1px 0 #2c0a1e;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    from { text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff69b4, 0 0 15px #ff69b4; }
+    to { text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4, 0 0 30px #ff69b4; }
 }
 
 .game-wrapper {
     width: 100%;
-    max-width: 1000px;
-    padding: 20px;
+    max-width: 1600px;
+    padding: 30px;
     box-sizing: border-box;
+    display: flex;
+    gap: 30px;
+    background-color: rgba(28, 6, 18, 0.8); /* Fondo semi-transparente */
+    border-radius: 20px;
+    box-shadow: 0 0 20px #ff69b4;
 }
-
 .game-container {
     position: relative;
-    width: 100%;
-    padding-bottom: 100%;
-    border: 4px solid #f9a8d4;
-    border-radius: 12px;
+    width: 800px;
+    height: 800px;
+    border: 6px solid #ff69b4;
+    border-radius: 16px;
     overflow: hidden;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-}
-
-/* Estilos generales para los botones (izquierda y derecha) */
-.category-buttons, .category-buttons-right {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    z-index: 10;
-}
-
-/* Botones de la izquierda */
-.category-buttons {
-    left: 30px;
-}
-
-/* Botones de la derecha */
-.category-buttons-right {
-    right: 30px;
-}
-
-.category-button {
-    width: 70px;
-    height: 70px;
-    border: none;
-    border-radius: 50%;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-.category-button:hover {
-    transform: scale(1.05);
-}
-
-.category-button::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, #f9a8d4, #c084fc, #93c5fd);
-    opacity: 0.7;
-    animation: gradient 15s ease infinite;
-}
-
-.category-button span {
-    position: relative;
-    z-index: 1;
-    color: white;
-    font-weight: 500;
-    font-size: 0.9em;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
 }
 
 .character-layer {
@@ -89,8 +68,7 @@ body {
     transition: all 0.3s;
 }
 
-/* ... (resto de tus estilos para #head, #body, #tops, etc.) ... */
-#head {
+#makeup {
     width: 30%;
     height: 28%;
     top: 18%;
@@ -136,59 +114,125 @@ body {
     top: 15%;
     left: 42.5%;
     z-index: 9999;
-    display: none;
 }
 
-/* Estilos para los nuevos elementos (gorros, bolsos, collares) */
 #hats {
-    width: 40%; /* Ajusta según sea necesario */
-    height: 40%; /* Ajusta según sea necesario */
-    top: 15%;    /* Ajusta según sea necesario */
-    left: 30%;   /* Ajusta según sea necesario */
-    z-index: 42; /* Encima de la cabeza y el lazo */
-    display: none; /* Inicialmente oculto */
+    width: 40%;
+    height: 40%;
+    top: 15%;
+    left: 30%;
+    z-index: 42;
 }
 
 #bags {
-    width: 20%; /* Ajusta según sea necesario */
-    height: 30%; /* Ajusta según sea necesario */
-    top: 43%;   /* Ajusta según sea necesario */
-    left: 25%;  /* Ajusta según sea necesario */
-    z-index: 35; /* Encima de la ropa, pero debajo de la cabeza */
-    display: none; /* Inicialmente oculto */
+    width: 20%;
+    height: 30%;
+    top: 43%;
+    left: 25%;
+    z-index: 35;
 }
 
 #necklaces {
-    width: 15%; /* Ajusta según sea necesario */
-    height: 15%; /* Ajusta según sea necesario */
-    top: 30%;   /* Ajusta según sea necesario */
-    left: 42.5%; /* Ajusta según sea necesario */
-    z-index: 36; /* Encima de la ropa */
-    display: none; /* Inicialmente oculto */
+    width: 15%;
+    height: 15%;
+    top: 30%;
+    left: 42.5%;
+    z-index: 36;
 }
 
-
-@keyframes gradient {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+.item-grids-container {
+    flex: 1;
+    overflow-y: auto;
+    max-height: 800px;
+    scrollbar-width: thin;
+    scrollbar-color: #ff69b4 #2c0a1e;
 }
 
-/* Estilos para dispositivos móviles */
-@media (max-width: 600px) {
+.item-grids-container::-webkit-scrollbar {
+    width: 12px;  /* Width of the scrollbar */
+}
+
+.item-grids-container::-webkit-scrollbar-track {
+    background: #f0f0f0; /*  Lighter track color */
+    border-radius: 10px; /* Rounded track */
+}
+
+.item-grids-container::-webkit-scrollbar-thumb {
+    background-color: #ff69b4;    /* Pink thumb */
+    border-radius: 10px;        /* Rounded thumb */
+    border: 3px solid #f0f0f0;  /* Border matches track */
+}
+
+.item-grids-container::-webkit-scrollbar-thumb:hover {
+    background-color: #f06292; /* Darker pink on hover */
+}
+
+.item-grid {
+    margin-bottom: 25px;
+    border: 2px solid #ff69b4;
+    padding: 15px;
+    box-sizing: border-box;
+    background: #3d0f2b; /* Fondo oscuro para los grids */
+    border-radius: 12px;
+    box-shadow: 0 0 10px #ff69b4;
+}
+
+.item-grid h3 {
+    margin: 0 0 15px 0;
+    text-align: left;
+    font-size: 18px;
+    color: #ff69b4; /* Título en rosa neón */
+    font-weight: bold;
+    text-shadow: 0 0 5px #ff69b4; /* Efecto de brillo */
+}
+
+.thumbnail-wrapper {
+    display: inline-block;
+    margin: 0 12px 12px 0;
+}
+
+.item-thumbnail {
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border: 3px solid #4a0e2e; /* Borde más oscuro */
+    box-sizing: border-box;
+    border-radius: 50%; /* Thumbnails circulares */
+    padding: 3px;
+    transition: all 0.3s ease;
+}
+
+.item-thumbnail:hover {
+    border-color: #ff69b4;
+    transform: scale(1.1); /* Efecto de aumento al pasar el mouse */
+    box-shadow: 0 0 15px #ff69b4; /* Brillo al pasar el mouse */
+}
+
+.item-thumbnail.selected {
+    border-color: #ff1493; /* Rosa más intenso para selección */
+    box-shadow: 0 0 20px #ff1493; /* Brillo más intenso para selección */
+}
+
+/* Mobile Styles */
+@media (max-width: 1024px) {
     .game-wrapper {
-        padding: 10px;
+        flex-direction: column;
+        padding: 15px;
     }
 
-
-
-    .category-button {
-        width: 45px;
-        height: 45px;
+    .game-container {
+        width: 100%;
+        height: auto;
+        padding-bottom: 100%;
     }
 
-    .category-button span {
-        font-size: 0.7em;
+    .item-grids-container {
+        width: 100%;
+        max-height: none;
     }
-        /* ... (tus ajustes para accesorios en móvil) ... */
 
+    .item-thumbnail {
+        width: 60px;
+        height: 60px;
+    }
 }
