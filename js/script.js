@@ -42,6 +42,7 @@ const assets = {
     hats: [
         { img: 'assets/hats/hat1.png', thumb: 'assets/thumbnails/hat1_thumb.png', name: 'Hat 1' },
         { img: 'assets/hats/hat2.png', thumb: 'assets/thumbnails/hat2_thumb.png', name: 'Hat 2' },
+        { img: 'assets/hats/hat3.png', thumb: 'assets/thumbnails/hat3_thumb.png', name: 'Hat 3' },
     ],
     bags: [
         { img: 'assets/bags/bag1.png', thumb: 'assets/thumbnails/bag1_thumb.png', name: 'Bag 1' },
