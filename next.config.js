@@ -1,8 +1,7 @@
-// next.config.js (JavaScript - SÍ funcionará)
+// next.config.js (Si NO tienes un basePath, mejor, déjalo así)
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // Otras configuraciones...
 };
 
 module.exports = nextConfig;

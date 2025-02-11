@@ -1,4 +1,4 @@
-//src/utils/gameLogic.ts (Completo con todos los cambios)
+// src/utils/gameLogic.ts (CORREGIDO - ¡Usa este!)
 import html2canvas from 'html2canvas';
 
 export interface GameItem {
@@ -60,27 +60,24 @@ export const assets: { [key: string]: GameItem[] } = {
     { img: '/assets/necklaces/necklace1.png', thumb: '/assets/thumbnails/necklace1_thumb.png', name: 'Necklace 1' },
   ],
   pets: [
-    // Nueva categoría de mascotas
     { img: '/assets/pets/pet1.png', thumb: '/assets/thumbnails/pet1_thumb.png', name: 'Pet 1' },
     { img: '/assets/pets/pet2.png', thumb: '/assets/thumbnails/pet2_thumb.png', name: 'Pet 2' },
     { img: '/assets/pets/pet3.png', thumb: '/assets/thumbnails/pet3_thumb.png', name: 'Pet 3' },
-    // Añade más mascotas aquí
   ],
 };
 
-// Set default items *correctly*
 export const currentItems: { [key: string]: GameItem | null } = {
-  makeup: assets.makeup[0], // cara1
-  body: assets.body[0], // cuerpo
-  tops: assets.tops[0], // top1
-  bottoms: assets.bottoms[0], // bottom1
-  shoes: assets.shoes[0], // shoes1
+  makeup: assets.makeup[0],
+  body: assets.body[0],
+  tops: assets.tops[0],
+  bottoms: assets.bottoms[0],
+  shoes: assets.shoes[0],
   background: assets.background[0],
   bow: null,
   hats: null,
   bags: null,
   necklaces: null,
-  pets: null, // Inicialmente, no hay mascota seleccionada
+  pets: null,
 };
 
 export function createItemGrids(): void {
@@ -112,19 +109,15 @@ function handleItemClick(event: MouseEvent): void {
   const itemIndex = parseInt(target.dataset.itemIndex!);
   const selectedItem = assets[category][itemIndex];
 
-  // Categories that can be toggled (accessories, background, and now pets)
   const toggleableCategories = ['background', 'bow', 'hats', 'bags', 'necklaces', 'pets'];
 
-  // Deselect the *previously* selected item in this category
   const previouslySelected = document.querySelector(`.item-thumbnail.selected[data-category="${category}"]`);
   if (previouslySelected) {
     previouslySelected.classList.remove('selected');
   }
 
   if (toggleableCategories.includes(category)) {
-    // Toggle logic for accessories, background, and pets
     if (currentItems[category] === selectedItem) {
-      // Deselect (remove) the item
       currentItems[category] = null;
       target.classList.remove('selected');
       const element = document.getElementById(category);
@@ -138,7 +131,6 @@ function handleItemClick(event: MouseEvent): void {
           }
       }
     } else {
-      // Select the new item
       currentItems[category] = selectedItem;
       target.classList.add('selected');
       const element = document.getElementById(category);
@@ -153,7 +145,6 @@ function handleItemClick(event: MouseEvent): void {
       }
     }
   } else {
-    //  Always set the new item for non-toggleable categories
     currentItems[category] = selectedItem;
     target.classList.add('selected');
     const element = document.getElementById(category);
@@ -163,11 +154,9 @@ function handleItemClick(event: MouseEvent): void {
   }
 }
 
-// --- NUEVO CÓDIGO PARA GUARDAR/CARGAR ---
-
 export function saveGame(): void {
   localStorage.setItem('dressUpArayette_save', JSON.stringify(currentItems));
-  alert('¡Juego guardado!'); // Feedback simple.  Podrías usar algo más elegante.
+  alert('¡Juego guardado!');
 }
 
 export function loadGame(): void {
@@ -175,10 +164,8 @@ export function loadGame(): void {
   if (savedData) {
     const parsedData = JSON.parse(savedData) as { [key: string]: GameItem | null };
 
-    // Restaurar currentItems
     Object.assign(currentItems, parsedData);
 
-    // Restaurar la visualización
     for (const category in currentItems) {
       const item = currentItems[category];
       const element = document.getElementById(category);
@@ -186,7 +173,7 @@ export function loadGame(): void {
       if (item) {
         if (element instanceof HTMLElement) {
           element.style.backgroundImage = `url('${item.img}')`;
-          element.style.display = 'block'; // Asegurarse de que sea visible
+          element.style.display = 'block';
         } else if (category === 'background') {
             const gameContainer = document.querySelector('.game-container');
             if(gameContainer instanceof HTMLElement){
@@ -194,7 +181,6 @@ export function loadGame(): void {
             }
         }
 
-        // Restaurar la selección en las miniaturas
         const itemIndex = assets[category]?.findIndex((assetItem) => assetItem.img === item.img);
         if (itemIndex !== -1 && itemIndex !== undefined) {
           const thumb = document.querySelector(
@@ -205,7 +191,6 @@ export function loadGame(): void {
           }
         }
       } else {
-        // Si item es null (para accesorios), limpiar
         if (element instanceof HTMLElement) {
           element.style.backgroundImage = '';
           element.style.display = 'none';
@@ -217,9 +202,7 @@ export function loadGame(): void {
     alert('No hay juego guardado.');
   }
 }
-// --- FIN DEL NUEVO CÓDIGO ---
 
-// --- CÓDIGO PARA DESCARGAR ---
 export function downloadImage(): void {
     const gameContainer = document.querySelector('.game-container');
     if(gameContainer instanceof HTMLElement){
@@ -232,4 +215,3 @@ export function downloadImage(): void {
          });
     }
 }
-// --- FIN DEL CÓDIGO PARA DESCARGAR ---
