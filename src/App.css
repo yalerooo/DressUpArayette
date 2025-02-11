@@ -25,6 +25,8 @@ body {
   color: #ffc0cb;
 }
 
+
+
 /* Styles for the title container */
 .title-container {
   position: relative; /* Important for BlurText positioning */
@@ -39,6 +41,15 @@ body {
 
 }
 
+.capture-button-image {
+  position: absolute;
+  top: 10px;        /* Adjust as needed for spacing */
+  right: .1px;       /* Adjust as needed for spacing */
+  width: 50px;      /* Adjust to your image's size */
+  height: 50px;     /* Adjust to your image's size */
+  z-index: 10000;    /* Ensure it's above other elements, even ClickSpark */
+  border-radius: 50%;
+}
 
 /* Reuse the original game-title styles */
 .game-title {
