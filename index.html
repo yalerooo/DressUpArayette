@@ -9,6 +9,11 @@
 <body>
     <h1 class="game-title">Dress Up Arayette</h1>
     <div class="game-wrapper">
+        <div class="button-container">
+            <button id="save-button" class="game-button">Guardar</button>
+            <button id="load-button" class="game-button">Cargar</button>
+            <button id="download-button" class="game-button">Descargar</button>
+        </div>
         <div class="game-container">
             <div id="makeup" class="character-layer"></div>
             <div id="body" class="character-layer"></div>
@@ -19,7 +24,7 @@
             <div id="hats" class="character-layer"></div>
             <div id="bags" class="character-layer"></div>
             <div id="necklaces" class="character-layer"></div>
-            <div id="pets" class="character-layer"></div>  <!-- Nueva capa para mascotas -->
+            <div id="pets" class="character-layer"></div>
         </div>
 
         <div class="item-grids-container">
@@ -35,7 +40,7 @@
             <div class="item-grid" id="shoes-grid">
                 <h3>Zapatillas</h3>
             </div>
-             <div class="item-grid" id="bow-grid">
+            <div class="item-grid" id="bow-grid">
                 <h3>Lazos</h3>
             </div>
             <div class="item-grid" id="hats-grid">
@@ -50,12 +55,14 @@
             <div class="item-grid" id="background-grid">
                 <h3>Fondos</h3>
             </div>
-            <div class="item-grid" id="pets-grid"> <!-- Nuevo grid para mascotas -->
+            <div class="item-grid" id="pets-grid">
                 <h3>Mascotas</h3>
             </div>
         </div>
     </div>
 
     <script src="js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </body>
 </html>
+

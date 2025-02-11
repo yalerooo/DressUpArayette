@@ -145,6 +145,73 @@ function handleItemClick(event) {
     }
 }
 
+
+// --- NUEVO CÓDIGO PARA GUARDAR/CARGAR ---
+
+function saveGame() {
+    localStorage.setItem('dressUpArayette_save', JSON.stringify(currentItems));
+    alert('¡Juego guardado!'); // Feedback simple.  Podrías usar algo más elegante.
+}
+
+function loadGame() {
+    const savedData = localStorage.getItem('dressUpArayette_save');
+    if (savedData) {
+        const parsedData = JSON.parse(savedData);
+
+        // Restaurar currentItems
+        Object.assign(currentItems, parsedData);
+
+        // Restaurar la visualización
+        for (const category in currentItems) {
+            const item = currentItems[category];
+            const element = document.getElementById(category);
+
+            if (item) {
+                 if (element) {
+                    element.style.backgroundImage = `url('${item.img}')`;
+                    element.style.display = 'block'; // Asegurarse de que sea visible
+                } else if (category === 'background') {
+                     document.querySelector('.game-container').style.backgroundImage = `url('${item.img}')`;
+                }
+
+                // Restaurar la selección en las miniaturas
+                const itemIndex = assets[category]?.findIndex(assetItem => assetItem.img === item.img);
+                if (itemIndex !== -1 && itemIndex !== undefined){
+                    const thumb = document.querySelector(`.item-thumbnail[data-category="${category}"][data-itemindex="${itemIndex}"]`);
+                    if(thumb) {
+                        thumb.classList.add('selected');
+                    }
+                }
+
+
+            } else {
+                // Si item es null (para accesorios), limpiar
+                 if(element){
+                    element.style.backgroundImage = '';
+                    element.style.display = 'none';
+                 }
+            }
+        }
+         alert('¡Juego cargado!');
+    } else {
+        alert('No hay juego guardado.');
+    }
+}
+// --- FIN DEL NUEVO CÓDIGO ---
+
+// --- CÓDIGO PARA DESCARGAR ---
+function downloadImage() {
+    html2canvas(document.querySelector('.game-container')).then(canvas => {
+        const image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        const link = document.createElement('a');
+        link.download = 'arayette.png';
+        link.href = image;
+        link.click();
+    });
+}
+// --- FIN DEL CÓDIGO PARA DESCARGAR ---
+
+
 function initializeGame() {
     // Set initial items (using the selected item objects, which are already correct)
     document.getElementById('makeup').style.backgroundImage = `url('${currentItems.makeup.img}')`;
@@ -153,6 +220,7 @@ function initializeGame() {
     document.getElementById('bottoms').style.backgroundImage = `url('${currentItems.bottoms.img}')`;
     document.getElementById('shoes').style.backgroundImage = `url('${currentItems.shoes.img}')`;
     document.querySelector('.game-container').style.backgroundImage = `url('${currentItems.background.img}')`;
+    
 
     createItemGrids();
 
@@ -166,6 +234,12 @@ function initializeGame() {
             thumb.classList.add('selected');
         }
     }
+
+     // --- AÑADIR EVENT LISTENERS A LOS BOTONES ---
+    document.getElementById('save-button').addEventListener('click', saveGame);
+    document.getElementById('load-button').addEventListener('click', loadGame);
+    document.getElementById('download-button').addEventListener('click', downloadImage);
+     // --- FIN DE LOS EVENT LISTENERS ---
 }
 
 window.onload = initializeGame;
