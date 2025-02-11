@@ -8,33 +8,33 @@ export default function Home() {
   }, []);
 
   function initializeGame() {
-    // Set initial items (using the selected item objects, which are already correct)
+    // Set initial items
     const makeupElement = document.getElementById('makeup');
-    if (makeupElement) {
+    if (makeupElement instanceof HTMLElement) {
       makeupElement.style.backgroundImage = `url('${currentItems.makeup?.img}')`;
     }
 
     const bodyElement = document.getElementById('body');
-    if (bodyElement) {
+    if (bodyElement instanceof HTMLElement) {
        bodyElement.style.backgroundImage = `url('${currentItems.body?.img}')`;
     }
    
     const topsElement = document.getElementById('tops');
-    if(topsElement){
+    if(topsElement instanceof HTMLElement){
         topsElement.style.backgroundImage = `url('${currentItems.tops?.img}')`;
     }
 
     const bottomsElement = document.getElementById('bottoms');
-    if(bottomsElement){
+    if(bottomsElement instanceof HTMLElement){
         bottomsElement.style.backgroundImage = `url('${currentItems.bottoms?.img}')`;
     }
      const shoesElement = document.getElementById('shoes');
-    if(shoesElement){
+    if(shoesElement instanceof HTMLElement){
         shoesElement.style.backgroundImage = `url('${currentItems.shoes?.img}')`;
     }
    
     const gameContainer = document.querySelector('.game-container');
-    if(gameContainer){
+    if(gameContainer instanceof HTMLElement){
       gameContainer.style.backgroundImage = `url('${currentItems.background?.img}')`;
     }
 

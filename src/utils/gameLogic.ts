@@ -1,4 +1,4 @@
-// src/utils/gameLogic.ts
+//src/utils/gameLogic.ts (Completo con todos los cambios)
 import html2canvas from 'html2canvas';
 
 export interface GameItem {
@@ -128,12 +128,12 @@ function handleItemClick(event: MouseEvent): void {
       currentItems[category] = null;
       target.classList.remove('selected');
       const element = document.getElementById(category);
-      if (element) {
+      if (element instanceof HTMLElement) {
         element.style.backgroundImage = '';
         element.style.display = 'none';
       } else {
           const gameContainer = document.querySelector('.game-container');
-          if(gameContainer){
+          if(gameContainer instanceof HTMLElement){
             gameContainer.style.backgroundImage = '';
           }
       }
@@ -142,12 +142,12 @@ function handleItemClick(event: MouseEvent): void {
       currentItems[category] = selectedItem;
       target.classList.add('selected');
       const element = document.getElementById(category);
-      if (element) {
+      if (element instanceof HTMLElement) {
         element.style.backgroundImage = `url('${selectedItem.img}')`;
         element.style.display = 'block';
       } else {
          const gameContainer = document.querySelector('.game-container');
-          if(gameContainer){
+          if(gameContainer instanceof HTMLElement){
             gameContainer.style.backgroundImage = `url('${selectedItem.img}')`;
           }
       }
@@ -157,7 +157,7 @@ function handleItemClick(event: MouseEvent): void {
     currentItems[category] = selectedItem;
     target.classList.add('selected');
     const element = document.getElementById(category);
-     if (element) {
+     if (element instanceof HTMLElement) {
         element.style.backgroundImage = `url('${selectedItem.img}')`;
       }
   }
@@ -184,12 +184,12 @@ export function loadGame(): void {
       const element = document.getElementById(category);
 
       if (item) {
-        if (element) {
+        if (element instanceof HTMLElement) {
           element.style.backgroundImage = `url('${item.img}')`;
           element.style.display = 'block'; // Asegurarse de que sea visible
         } else if (category === 'background') {
             const gameContainer = document.querySelector('.game-container');
-            if(gameContainer){
+            if(gameContainer instanceof HTMLElement){
                 gameContainer.style.backgroundImage = `url('${item.img}')`;
             }
         }
@@ -206,7 +206,7 @@ export function loadGame(): void {
         }
       } else {
         // Si item es null (para accesorios), limpiar
-        if (element) {
+        if (element instanceof HTMLElement) {
           element.style.backgroundImage = '';
           element.style.display = 'none';
         }
@@ -222,7 +222,7 @@ export function loadGame(): void {
 // --- CÓDIGO PARA DESCARGAR ---
 export function downloadImage(): void {
     const gameContainer = document.querySelector('.game-container');
-    if(gameContainer){
+    if(gameContainer instanceof HTMLElement){
          html2canvas(gameContainer).then((canvas) => {
             const image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
             const link = document.createElement('a');
@@ -232,3 +232,4 @@ export function downloadImage(): void {
          });
     }
 }
+// --- FIN DEL CÓDIGO PARA DESCARGAR ---
