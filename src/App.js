@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Character from './components/Character';
 import ItemGrid from './components/ItemGrid';
 import ButtonBar from './components/ButtonBar';
+import BlurText from './components/BlurText'; // Import BlurText
 import './App.css';
 
 const assets = {
@@ -9,7 +10,6 @@ const assets = {
         { img: 'assets/body/cara.png', thumb: 'assets/thumbnails/cara_thumb.png', name: 'Cara 1' },
         { img: 'assets/body/cara2.png', thumb: 'assets/thumbnails/cara2_thumb.png', name: 'Cara 2' },
     ],
-    // body: [{ img: 'assets/body/cuerpo.png', thumb: 'assets/thumbnails/cuerpo_thumb.png', name: 'Cuerpo' }], // Keep the data, but don't include it in the grids
     tops: [
         { img: 'assets/tops/top1.png', thumb: 'assets/thumbnails/top1_thumb.png', name: 'Top 1' },
         { img: 'assets/tops/top2.png', thumb: 'assets/thumbnails/top2_thumb.png', name: 'Top 2' },
@@ -68,7 +68,7 @@ function App() {
         const savedData = localStorage.getItem('dressUpArayette_save');
         return savedData ? JSON.parse(savedData) : {
             makeup: assets.makeup[0],
-            body:  { img: 'assets/body/cuerpo.png', thumb: 'assets/thumbnails/cuerpo_thumb.png', name: 'Cuerpo' }, //Keep body fixed.
+            body:  { img: 'assets/body/cuerpo.png', thumb: 'assets/thumbnails/cuerpo_thumb.png', name: 'Cuerpo' },
             tops: assets.tops[0],
             bottoms: assets.bottoms[0],
             shoes: assets.shoes[0],
@@ -116,17 +116,29 @@ function App() {
         }
     };
 
+    const handleAnimationComplete = () => {
+      console.log('Animation completed!');
+    };
+
 
     return (
         <div className="App">
-            <h1 className="game-title">Dress Up Arayette</h1>
+            <div className="title-container">
+            <BlurText
+                text="Dress Up Arayette"
+                delay={100}
+                animateBy="words"
+                direction="top"
+                className="game-title"  // Use game-title for styling
+                onAnimationComplete={handleAnimationComplete}
+            />
+            </div>
             <ButtonBar onSave={handleSave} onLoad={handleLoad}  />
             <div className="game-wrapper">
                 <Character currentItems={currentItems} />
                 <div className="item-grids-container">
-                    {/* Exclude 'body' from the item grids */}
                     {Object.keys(assets)
-                      .filter(category => category !== 'body') // This line removes 'body'
+                      .filter(category => category !== 'body')
                       .map(category => (
                         <ItemGrid
                             key={category}

@@ -1,4 +1,17 @@
 /* src/App.css */
+@font-face {
+  font-family: 'aespaD'; /* Choose a name for your font */
+  src: url('../public/fonts/aespa_Display.ttf') format('truetype');
+  font-weight: normal; 
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'aespaR';
+  src: url('../public/fonts/aespa_Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal; 
+}
 
 body {
   margin: 0;
@@ -12,31 +25,40 @@ body {
   color: #ffc0cb;
 }
 
+/* Styles for the title container */
+.title-container {
+  position: relative; /* Important for BlurText positioning */
+  width: 100%;
+  margin-bottom: 20px; /* Space below title */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px; /* Space from the top */
+  overflow: hidden; /* Prevent any animation overflow */
+
+
+}
+
+
+/* Reuse the original game-title styles */
+.game-title {
+  font-family: 'aespaD', sans-serif;
+  font-size: 70px;
+  font-weight: normal;
+  color: #ff69b4;
+  text-shadow: 3px 3px 0 #2c0a1e, -1px -1px 0 #2c0a1e, 1px -1px 0 #2c0a1e,
+               -1px 1px 0 #2c0a1e, 1px 1px 0 #2c0a1e;
+  letter-spacing: 2px;
+  white-space: pre;
+}
+
+
 @keyframes floatingBg {
   0% {
     background-position: 0 0, 0 0, 0 0;
   }
   100% {
     background-position: 100px 100px, 150px 150px, 200px 200px;
-  }
-}
-
-.game-title {
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  font-size: 48px;
-  color: #ff69b4;
-  text-shadow: 3px 3px 0 #2c0a1e, -1px -1px 0 #2c0a1e, 1px -1px 0 #2c0a1e, -1px 1px 0 #2c0a1e, 1px 1px 0 #2c0a1e;
-  margin-bottom: 20px;
-  letter-spacing: 2px;
-  animation: titleGlow 2s ease-in-out infinite alternate;
-}
-
-@keyframes titleGlow {
-  from {
-    text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff69b4, 0 0 15px #ff69b4;
-  }
-  to {
-    text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4, 0 0 30px #ff69b4;
   }
 }
 
@@ -205,11 +227,9 @@ body {
   padding: 10px;
 }
 
-.game-title {
-  font-size: 36px;
-  margin-bottom: 15px;
+.title-container {
+  flex-direction: column;
 }
-
 .game-wrapper {
   flex-direction: column;
   padding: 15px;
