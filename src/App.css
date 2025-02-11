@@ -256,6 +256,7 @@ box-shadow: 0 0 20px #ff1493;
   }
 
     .capture-button-image {
+      margin-top: 50%;
         top: 5px;
         right: 25%;
         width: 30px;
@@ -263,6 +264,7 @@ box-shadow: 0 0 20px #ff1493;
     }
 
   .game-wrapper {
+    margin-top: -50%;
     flex-direction: column;
     padding: 0;
     align-items: center; /* Changed to center for inner content alignment */
@@ -278,6 +280,7 @@ box-shadow: 0 0 20px #ff1493;
   }
 
   .game-container{
+    margin-top: 50%;
     width: calc(100% - 250px);
     max-width: 50%;
     max-height: 50%;
