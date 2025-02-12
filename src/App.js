@@ -49,39 +49,39 @@ function App() {
 
     return (
         <div className="App">
-            <Noise /> {/* Add Noise here, outside other containers */}
-            <div className="title-container">
-                <BlurText
-                    text="Dress Up Arayette"
-                    delay={100}
-                    animateBy="words"
-                    direction="top"
-                    className="game-title"
-                    onAnimationComplete={handleAnimationComplete}
-                />
+          <Noise />
+          <div className="title-container">
+            <BlurText
+              text="Dress Up Arayette"
+              delay={100}
+              animateBy="words"
+              direction="top"
+              className="game-title"
+              onAnimationComplete={handleAnimationComplete}
+            />
+          </div>
+          <div className="game-wrapper">
+            <div id="game-container">
+              <CaptureButton targetElementId="game-container" imageSrc={cameraIcon} />
+              <Character currentItems={currentItems} />
+              <ClickSpark />
             </div>
-            <div className="game-wrapper">
-                <div id="game-container" style={{ position: 'relative', width: '800px', height: '800px' }}>
-                    <CaptureButton targetElementId="game-container" imageSrc={cameraIcon} />
-                    <Character currentItems={currentItems} />
-                    <ClickSpark />
-                </div>
-                <div className="item-grids-container">
-                    {Object.keys(assets)
-                        .filter(category => category !== 'body')
-                        .map(category => (
-                            <ItemGrid
-                                key={category}
-                                category={category}
-                                items={assets[category]}
-                                currentItem={currentItems[category]}
-                                onItemClick={handleItemClick}
-                            />
-                        ))}
-                </div>
+            <div className="item-grids-container">
+              {Object.keys(assets)
+                .filter(category => category !== 'body')
+                .map(category => (
+                  <ItemGrid
+                    key={category}
+                    category={category}
+                    items={assets[category]}
+                    currentItem={currentItems[category]}
+                    onItemClick={handleItemClick}
+                  />
+                ))}
             </div>
+          </div>
         </div>
-    );
-}
+      );
+    }
 
 export default App;
