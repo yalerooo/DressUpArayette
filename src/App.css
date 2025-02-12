@@ -52,12 +52,14 @@ body, html {
   flex-grow: 1;
   padding: 1rem;
   gap: 2rem;
+  margin: 0 auto;
+  width: 100%;
 }
 
 #game-container {
   position: relative;
   width: 100%;
-  max-width: 800px;
+  max-width: 780px;
   aspect-ratio: 1 / 1;
   background-color: var(--color-bg-light);
   border-radius: 16px;
@@ -218,7 +220,7 @@ body, html {
   right: 1rem;
   width: 40px;
   height: 40px;
-  z-index: 100;
+  z-index: 9999999;
   cursor: pointer;
   transition: transform 0.3s ease;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
@@ -234,6 +236,9 @@ body, html {
     flex-direction: row;
     align-items: flex-start;
     padding: 2rem;
+    justify-content: center;
+    max-width: 78%; 
+    margin: 0 auto; 
   }
 
   #game-container {
@@ -243,12 +248,21 @@ body, html {
 
   .item-grids-container {
     flex: 1;
-    height: 800px;
+    height: 750px;
   }
 
   .item-thumbnail {
     width: 70px;
     height: 70px;
+  }
+
+  .thumbnail-wrapper {
+    flex-wrap: wrap;
+    overflow-x: hidden; 
+    overflow-y: visible; 
+    justify-content: flex-start; 
+    padding-bottom: 0; 
+    max-height: none; 
   }
 }
 
@@ -259,6 +273,7 @@ body, html {
 
   .game-wrapper {
     padding: 0.5rem;
+    
   }
 
   #game-container {

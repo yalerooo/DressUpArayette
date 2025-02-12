@@ -7,7 +7,7 @@ import ClickSpark from './components/ClickSpark';
 import CaptureButton from './components/CaptureButton';
 import assets from './assets/assets';
 import './App.css';
-import Noise from './components/Noise'; // Import the Noise component
+import Noise from './components/Noise';
 import cameraIcon from './assets/thumbnails/camera_icon_thumb.png';
 
 const LOCAL_STORAGE_KEY = 'dressUpArayette_save';
