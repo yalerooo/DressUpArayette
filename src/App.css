@@ -1,6 +1,7 @@
 /* Variables y reset */
 :root {
   --color-bg-dark: #0a0a0a;
+  --color-bg-pink: #16010a;
   --color-bg-light: #1a1a1a;
   --color-primary: #ff1493;
   --color-secondary: #ff69b4;
@@ -37,7 +38,7 @@ body, html {
   padding: 0;
   height: 100%;
   font-family: "Quicksand", sans-serif;
-  background-color: var(--color-bg-dark);
+  background-color: var(--color-bg-pink);
   color: var(--color-text);
 }
 
@@ -46,7 +47,7 @@ body, html {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: var(--color-bg-dark);
+  background-color: var(--color-bg-pink);
 }
 
 /* Title Styles */

@@ -23,7 +23,7 @@ function CaptureButton({ targetElementId, imageSrc }) {
             }
 
             console.log("Intentando capturar con html2canvas...");
-            html2canvas(element)
+            html2canvas(element, { scale: 5 }) // Aumentamos la escala para mejorar la calidad
             .then(canvas => {
                 console.log("html2canvas promesa resuelta, canvas:", canvas);
                 requestAnimationFrame(() => {
