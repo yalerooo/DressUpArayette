@@ -42,6 +42,7 @@ body, html {
   color: var(--color-text);
 }
 
+
 /* App Container */
 .App {
   display: flex;

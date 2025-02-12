@@ -3,8 +3,8 @@
     position: fixed; /* VERY IMPORTANT: Use fixed positioning */
     left: 0;
     top: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     pointer-events: none; /*  Allow clicks to pass through */
-    z-index: -1; /* Put it behind everything else */
+    z-index: 0; /* Put it behind everything else */
   }
