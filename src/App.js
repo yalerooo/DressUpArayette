@@ -35,12 +35,26 @@ function App() {
     }, [currentItems]);
 
     const handleItemClick = (category, item) => {
-        const toggleableCategories = ['bow', 'hats', 'bags', 'necklaces', 'pets'];
+        // Categories that can be toggled off (set to null)
+        const toggleableCategories = ['tops', 'bottoms', 'shoes', 'background', 'bow', 'hats', 'bags', 'necklaces', 'pets']; // Added 'makeup' to toggleable categories
 
-        setCurrentItems(prevItems => ({
-            ...prevItems,
-            [category]: toggleableCategories.includes(category) ? (prevItems[category]?.id === item.id ? null : item) : item,
-        }));
+        // 'body' is NOT in toggleableCategories, so it will always have a value.
+
+        setCurrentItems(prevItems => {
+            if (toggleableCategories.includes(category)) {
+                // For toggleable categories, toggle between item and null
+                return {
+                    ...prevItems,
+                    [category]: prevItems[category]?.id === item.id ? null : item,
+                };
+            } else {
+                // For non-toggleable categories (like 'body' if we had more), just replace the item
+                return {
+                    ...prevItems,
+                    [category]: item,
+                };
+            }
+        });
     };
 
     const handleAnimationComplete = () => {
@@ -68,7 +82,7 @@ function App() {
             </div>
             <div className="item-grids-container">
               {Object.keys(assets)
-                .filter(category => category !== 'body')
+                .filter(category => category !== 'body') // Keep body in ItemGrid to allow changing body
                 .map(category => (
                   <ItemGrid
                     key={category}

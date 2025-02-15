@@ -25,6 +25,7 @@ const assets = {
         { id: 'shoes-3', img: 'assets/shoes/shoes3.png', thumb: 'assets/thumbnails/shoes3_thumb.png', name: 'Shoes 3' },
         { id: 'shoes-4', img: 'assets/shoes/shoes4.png', thumb: 'assets/thumbnails/shoes4_thumb.png', name: 'Shoes 4' },
         { id: 'shoes-5', img: 'assets/shoes/shoes5.png', thumb: 'assets/thumbnails/shoes5_thumb.png', name: 'Shoes 5' },
+        { id: 'shoes-6', img: 'assets/shoes/shoes6.png', thumb: 'assets/thumbnails/shoes6_thumb.png', name: 'Shoes 6' },
     ],
     background: [
         { id: 'bg-1', img: 'assets/backgrounds/bg1.png', thumb: 'assets/thumbnails/bg1_thumb.png', name: 'Background 1' },
